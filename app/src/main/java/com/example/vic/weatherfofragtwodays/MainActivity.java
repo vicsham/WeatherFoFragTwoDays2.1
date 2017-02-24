@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject tempDay = listDay.getJSONObject("temp");
                 tempMinDay = String.format("%.0f", tempDay.getDouble("min")) + "°";
                 tempMaxDay = String.format("%.0f", tempDay.getDouble("max")) + "°";
-                tempDayText = "min. " + tempMinDay + " - max. " + tempMaxDay;
+                //tempDayText = "min. " + tempMinDay + " - max. " + tempMaxDay;
 
                 JSONArray weatherDay = listDay.getJSONArray("weather");
 
@@ -199,31 +199,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        Toast.makeText(getApplicationContext(),
-                "Fragment!",
-                Toast.LENGTH_LONG).show();
 
         iconString = setWeatherIcon(weatherIdDay);
 
-
-
-
-
-
         idIcon = getResources().getIdentifier(iconString, "drawable", getPackageName());
 
-        callFragments(day,idIcon,tempDayText,descriptionDay, pressureDay,dateDay);
-
-     //   imageTomorrow.setImageResource(idIcon);
-
+        callFragments(day,idIcon,tempMinDay,tempMaxDay,descriptionDay, pressureDay,dateDay);
 
     }
-public  void callFragments(int day, int idIcon,String tempDayText,String descriptionDay,
+public  void callFragments(int day, int idIcon,String tempMinDay,String tempMaxDay,String descriptionDay,
                            String pressureDay, String dateDay){
-
-    Toast.makeText(MainActivity.this, "Json Data is downloading", Toast.LENGTH_LONG).show();
-    // подключаем FragmentManager
-
 
 
     if (day==1){
@@ -234,9 +219,7 @@ public  void callFragments(int day, int idIcon,String tempDayText,String descrip
     // Выводим нужную информацию
     if (fragmentTomorrow != null){
 
-           fragmentTomorrow.setDescription(idIcon,tempDayText,descriptionDay,pressureDay,dateDay);
-
-
+           fragmentTomorrow.setDescription(idIcon,tempMinDay,tempMaxDay,descriptionDay,pressureDay,dateDay);
                 }
     }
 
@@ -248,16 +231,28 @@ public  void callFragments(int day, int idIcon,String tempDayText,String descrip
         // Выводим нужную информацию
         if (fragmentAfterTomorrow != null){
 
-            fragmentAfterTomorrow.setDescription(idIcon,tempDayText,descriptionDay,pressureDay,dateDay);
+            fragmentAfterTomorrow.setDescription(idIcon,tempMinDay,tempMaxDay,descriptionDay,pressureDay,dateDay);
         }
     }
 
 }
     public static String setWeatherIcon(int weatherId) {
-        int id = (weatherId / 100);
+  //      int id = (weatherId / 100);
         String icon = "";
-        // int icon;
+        if ((199<weatherId)&(weatherId<233) ) icon = "w11d";
+        else if ((299<weatherId)&(weatherId<311) ) icon = "w05d";
+        else if ((310<weatherId)&(weatherId<322) ) icon = "w06d";
+        else if ((499<weatherId)&(weatherId<522) ) icon = "w08d";
+        else if ((522<weatherId)&(weatherId<532) ) icon = "w09d";
+        else if ((599<weatherId)&(weatherId<650) ) icon = "w13d";
+        else if ((700<weatherId)&(weatherId<799) ) icon = "w50d";
+        else if (800==weatherId) icon = "w01d";
+        else if (801==weatherId) icon = "w02d";
+        else if (802==weatherId) icon = "w03d";
+        else if ((803==weatherId)&(804==weatherId)) icon = "w04d";
 
+        // int icon;
+/*
         switch(id){
             case 2:
                 icon = "w11d";
@@ -278,11 +273,9 @@ public  void callFragments(int day, int idIcon,String tempDayText,String descrip
                 icon = "w10d"; //"&#xf019;";
                 break;
 
-        }
+        } */
         return icon;
 
     }
-
-
 
 }

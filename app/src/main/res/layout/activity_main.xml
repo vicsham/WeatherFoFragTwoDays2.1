@@ -32,9 +32,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:textColor="@android:color/holo_orange_dark"
+            android:textColor="#aa1611"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="35sp"  />
+            android:textSize="45sp"
+            android:textStyle="normal|bold"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -48,7 +49,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                tools:layout="@layout/fragment_tomorrow" />
+                tools:layout="@layout/fragment_tomorrow"
+                android:textStyle="normal|bold"
+                android:textColor="#aa1611"/>
 
             <LinearLayout
                 android:layout_weight="1"

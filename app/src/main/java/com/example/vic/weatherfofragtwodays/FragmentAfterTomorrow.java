@@ -15,28 +15,30 @@ import android.widget.TextView;
 
 public class FragmentAfterTomorrow extends Fragment{
 
-    private TextView textTempDay, textDescriptionDay, textPressureDay,textDateDay;
+    private TextView textTempMinDay,textTempMaxDay, textDescriptionDay, textPressureDay,textDateDay;
     private ImageView imageDay;
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
         View rootView1=inflater.inflate(R.layout.fragment_after_tomorrow,container,false);
 
         imageDay = (ImageView) rootView1.findViewById(R.id.imageDay);
-        textTempDay=(TextView) rootView1.findViewById(R.id.textTempDay);
+        textTempMinDay=(TextView) rootView1.findViewById(R.id.textTempMinDay);
+        textTempMaxDay=(TextView) rootView1.findViewById(R.id.textTempMaxDay);
         textDescriptionDay=(TextView)rootView1.findViewById(R.id.textDescriptionDay);
         textPressureDay=(TextView)rootView1.findViewById(R.id.textPressureDay);
         textDateDay=(TextView)rootView1.findViewById(R.id.textDate);
         return rootView1;
     }
 
-    public void setDescription(int idIcon,String tempDayText,String descriptionDay, String pressureDay,String dateDay) {
+    public void setDescription(int idIcon,String tempMinDayText,String tempMaxDayText,String descriptionDay, String pressureDay,String dateDay) {
 
-        textTempDay.setText(tempDayText);
+        textTempMinDay.setText(tempMinDayText);
+        textTempMaxDay.setText(tempMaxDayText);
         textDescriptionDay.setText(descriptionDay);
-        textPressureDay.setText(pressureDay);
-        imageDay.setImageResource(idIcon);
-        textDateDay.setText(dateDay);
 
+        imageDay.setImageResource(idIcon);
+    //    textDateDay.setText(dateDay);
+     //   textPressureDay.setText(pressureDay);
 
     }
 }
