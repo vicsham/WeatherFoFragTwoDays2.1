@@ -2,7 +2,7 @@ package com.example.vic.weatherfofragtwodays;
 
 
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentManager;
+import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
@@ -212,7 +212,7 @@ public  void callFragments(int day, int idIcon,String tempMinDay,String tempMaxD
 
 
     if (day==1){
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
 
     // Получаем ссылку на второй фрагмент по ID
     FragmentTomorrow fragmentTomorrow = (FragmentTomorrow) fragmentManager.findFragmentById(R.id.fragment_tomorrow);
@@ -224,7 +224,7 @@ public  void callFragments(int day, int idIcon,String tempMinDay,String tempMaxD
     }
 
     if (day==2){
-       FragmentManager fragmentManagerAfter = getSupportFragmentManager();
+       FragmentManager fragmentManagerAfter = getFragmentManager();
          //fragmentManager = getSupportFragmentManager();
         // Получаем ссылку на второй фрагмент по ID
         FragmentAfterTomorrow fragmentAfterTomorrow = (FragmentAfterTomorrow) fragmentManagerAfter.findFragmentById(R.id.fragment_after_tomorrow);
