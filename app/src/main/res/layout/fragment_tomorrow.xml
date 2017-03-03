@@ -7,8 +7,8 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 android:layout_weight="1"
 android:layout_centerHorizontal="true"
-    android:background="#90efd0a9"
-
+    android:background="@color/defaultBackGroundColor0"
+    android:textColor="@color/defaultTextColor0"
     >
 
 <TextView
@@ -24,7 +24,9 @@ android:layout_centerHorizontal="true"
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:textSize="35sp"
     android:textStyle="normal|bold"
-    android:textColor="#aa1611"/>
+    android:textColor="@color/defaultTextColor0"
+
+    />
 
     <TextView
         android:id="@+id/textDate"
@@ -35,7 +37,7 @@ android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/defaultTextColor0"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="15sp"
         android:textStyle="normal|bold"/>
@@ -67,8 +69,7 @@ android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:id="@+id/textTempMinDay"
             android:layout_gravity="center_horizontal"
-
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@color/defaultTextColor0"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="40sp"
             android:layout_weight="1"
@@ -86,7 +87,7 @@ android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:id="@+id/textTempMaxDay"
             android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@color/defaultTextColor0"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="50sp"
             android:layout_weight="1"
@@ -101,7 +102,7 @@ android:layout_centerHorizontal="true"
     android:layout_height="wrap_content"
     android:id="@+id/textDescriptionDay"
     android:layout_gravity="center_horizontal"
-    android:textColor="@android:color/holo_red_light"
+    android:textColor="@color/defaultTextColor0"
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:textStyle="bold"
     android:textSize="30sp"/>
@@ -114,7 +115,7 @@ android:layout_centerHorizontal="true"
     android:layout_height="wrap_content"
     android:id="@+id/textPressureDay"
     android:layout_gravity="center_horizontal"
-    android:textColor="@android:color/holo_green_light"
+    android:textColor="@color/defaultTextColor0"
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:textStyle="bold"
     android:textSize="30sp"/>

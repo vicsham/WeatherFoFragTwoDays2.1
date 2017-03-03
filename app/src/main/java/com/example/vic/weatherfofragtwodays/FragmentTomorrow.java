@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.example.vic.weatherfofragtwodays.R.id.textCity;
+
 /**
  * Created by vic on 20/02/2017.
  */
@@ -32,9 +34,10 @@ public class FragmentTomorrow extends Fragment{
         return rootView1;
     }
 
-    public void setDescription(int idIcon,String tempMinDayText,String tempMaxDayText,String descriptionDay, String pressureDay,String dateDay) {
+    public void setDescription(int idIcon,String tempMinDayText,String tempMaxDayText,String descriptionDay, String pressureDay,String dateDay ){
 
         textTempMinDay.setText(tempMinDayText);
+
         textTempMaxDay.setText(tempMaxDayText);
         textDescriptionDay.setText(descriptionDay);
 

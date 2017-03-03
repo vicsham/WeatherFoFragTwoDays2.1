@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONArray;
@@ -17,8 +18,6 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.util.Date;
 
-//import static com.example.vic.weatherforecasttwodays.R.drawable.w03n;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,16 +25,26 @@ public class MainActivity extends AppCompatActivity {
     // private ListView lvTomorrow,lvAfterTomorrow;
     public static String LOG_TAG = "JSON_result";
     DateFormat df = DateFormat.getDateTimeInstance();
-    String cityUrl = "Vitoria-Gasteiz";
+    String url;
+    String cityUrl0 = "Vitoria-Gasteiz";
+    String cityUrl1 = "Bilbao";
+    String cityUrl2 = "San Sebastian";
     String landUrl = "es";
     String apiId = "e25c9e1eb33eefc821749053b8257ae8";
-
+    String urlCity0 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityUrl0 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
+    String urlCity1 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityUrl1 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
+    //San Sebastian hecho por Id
+    String urlCity2 = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + 3110044 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
+   // String nameCity1="Bilbao";
+    String currentCity="";
     String jsonString;
+    int cityNumber=0;
     TextView textCity;
     private TextView textTomorrow, textTempTomorrow, textDescriptionTomorrow, textPressureTomorrow;
     private TextView textAfterTomorrow, textTempAfterTomorrow, textDescriptionAfterTomorrow, textPressureAfterTomorrow;
     private ImageView imageTomorrow, imageAfterTomorrow;
     private Layout fieldAfterTomorrow;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +53,41 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-        new GetDatosWeather().execute();
+      //  new GetDatosWeather(0).execute();
+      //  new GetDatosWeather(1).execute();
+        cityNumber=2;
+       new GetDatosWeather(cityNumber).execute();
     }
 
     private class GetDatosWeather extends AsyncTask<Object, Object, String> {
 
 
+        public GetDatosWeather(int cityNumber) {
+
+
+            switch (cityNumber) {
+                case 0:
+                    currentCity="Vitoria-Gasteiz";
+                    url=urlCity0;
+                    break;
+                case 1:
+                    currentCity="Bilbao-Bilbo";
+                    url=urlCity1;
+                    break;
+                case 2:
+                    currentCity="San Sebastián-Donstia";
+                    url=urlCity2;
+                    break;
+                default:break;
+            }
+
+        }
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-         //   Toast.makeText(MainActivity.this, "Json Data is downloading", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Json Data is downloading", Toast.LENGTH_LONG).show();
 
 
         }
@@ -64,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             HttpHandler sh = new HttpHandler();
             // Making a request to url and getting response
             //url de ciudad elegido:
-            String url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityUrl + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
+
 
             //datos recibidos:
             jsonString = sh.makeServiceCall(url);
@@ -102,9 +135,11 @@ public class MainActivity extends AppCompatActivity {
                     // Getting JSON Array node
                     JSONArray list = jsonDataGeneral.getJSONArray("list");
                     JSONObject city = jsonDataGeneral.getJSONObject("city");
-                    nameCity = city.getString("name");
+                    //nameCity = city.getString("name");
                     textCity = (TextView) findViewById(R.id.textCity);
-                    textCity.setText(nameCity);
+                   // textCity.setText(nameCity);
+                    textCity.setText(currentCity);
+                   
 
 
                 } catch (final JSONException e) {
@@ -130,15 +165,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-
-            setWeatherData(jsonStr,1);
-            setWeatherData(jsonStr,2);
+            //setWeatherData(jsonStr,0); //hoy
+            setWeatherData(jsonStr,1);  //mañana
+            setWeatherData(jsonStr,2);  //pasado mañana
         }
 
 
     }
 
-    public    void setWeatherData(String result,int day ){
+    public    void setWeatherData(String result,int day){
         String jsonStr=result;
 
         String tempDayText = "";
@@ -204,23 +239,50 @@ public class MainActivity extends AppCompatActivity {
 
         idIcon = getResources().getIdentifier(iconString, "drawable", getPackageName());
 
-        callFragments(day,idIcon,tempMinDay,tempMaxDay,descriptionDay, pressureDay,dateDay);
+        callFragments(day,cityNumber,idIcon,tempMinDay,tempMaxDay,descriptionDay, pressureDay,dateDay);
 
     }
-public  void callFragments(int day, int idIcon,String tempMinDay,String tempMaxDay,String descriptionDay,
+public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,String tempMaxDay,String descriptionDay,
                            String pressureDay, String dateDay){
 
 
-    if (day==1){
+    if (day==1) {
         FragmentManager fragmentManager = getFragmentManager();
+        switch (cityNumber) {
+            case 0:
+                FragmentTomorrow fragmentTomorrow = (FragmentTomorrow) fragmentManager.findFragmentById(R.id.fragment_tomorrow);
+                // Выводим нужную информацию
+                if (fragmentTomorrow != null) {
 
-    // Получаем ссылку на второй фрагмент по ID
-    FragmentTomorrow fragmentTomorrow = (FragmentTomorrow) fragmentManager.findFragmentById(R.id.fragment_tomorrow);
-    // Выводим нужную информацию
-    if (fragmentTomorrow != null){
-
-           fragmentTomorrow.setDescription(idIcon,tempMinDay,tempMaxDay,descriptionDay,pressureDay,dateDay);
+                    fragmentTomorrow.setDescription(idIcon, tempMinDay, tempMaxDay, descriptionDay, pressureDay, dateDay);
                 }
+
+                break;
+            /*
+            case 1:
+                FragmentTomorrow1 fragmentTomorrow1 = (FragmentTomorrow1) fragmentManager.findFragmentById(R.id.fragment_tomorrow_1);
+                // Выводим нужную информацию
+                if (fragmentTomorrow1 != null) {
+
+                    fragmentTomorrow1.setDescription(idIcon, tempMinDay, tempMaxDay, descriptionDay, pressureDay, dateDay);
+                }
+                break;
+            case 2:
+                FragmentTomorrow2 fragmentTomorrow2 = (FragmentTomorrow2) fragmentManager.findFragmentById(R.id.fragment_tomorrow_2);
+                // Выводим нужную информацию
+                if (fragmentTomorrow2 != null) {
+
+                    fragmentTomorrow2.setDescription(idIcon, tempMinDay, tempMaxDay, descriptionDay, pressureDay, dateDay);
+                }
+
+                break;
+            */
+            default:
+                break;
+        }
+
+        // Получаем ссылку на второй фрагмент по ID
+
     }
 
     if (day==2){
