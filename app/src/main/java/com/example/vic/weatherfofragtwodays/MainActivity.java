@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
     //San Sebastian hecho por Id
     //String urlCity2 = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + 3110044 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
    // String urlCity2 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityUrl2 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
-   // String nameCity1="Bilbao";
+
+    String nameCity1="Bilbao";
     String currentCity="";
     String jsonString;
     int cityNumber=0;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textAfterTomorrow, textTempAfterTomorrow, textDescriptionAfterTomorrow, textPressureAfterTomorrow;
     private ImageView imageTomorrow, imageAfterTomorrow;
     private Layout fieldAfterTomorrow;
-    boolean dataFull;
+    boolean dataCargada;
 
 
     @Override
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         Handler handler = new Handler();
+        dataCargada=false;
+
         cityNumber=0;
         currentCity="Vitoria-Gasteiz";
         url=urlCity0;
@@ -90,8 +93,16 @@ public class MainActivity extends AppCompatActivity {
                // currentCity="San Sebastián-Donstia";
                 url=urlCity2;
                 new GetDatosWeather().execute();
+                dataCargada=true;
             }
         }, 800);
+
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                cityNumber=2;
+                if (dataCargada)  weatherAnimation();
+            }
+        }, 5000);
 
 
     }
@@ -382,7 +393,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
 
     }
 
-/*
+
     private void weatherAnimation(){
 
          Handler handlerShow = new Handler();
@@ -401,29 +412,33 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 .beginTransaction()
                 .add(R.id.containerAfterTomorrow,new FragmentAfterTomorrow())
                 .commit();
-
-
+        textCity.setText(cityUrl0);
+/*
         handlerShow.postDelayed(new Runnable() {
             public void run() {
+                textCity.setText(cityUrl1);
                 flipTomorrow();
-             //   flipAfterTomorrow();
+                flipAfterTomorrow();
+
             }
         }, 4000);
 
         handlerShow.postDelayed(new Runnable() {
             public void run() {
+                textCity.setText(cityUrl2);
                 flipTomorrow();
-            //    flipAfterTomorrow();
+                flipAfterTomorrow();
+
             }
         }, 8000);
 
         handlerShow.postDelayed(new Runnable() {
             public void run() {
                 flipTomorrow();
-           //     flipAfterTomorrow();
+                flipAfterTomorrow();
             }
         }, 12000);
-
+*/
     }
     private void flipTomorrow(){
 
@@ -453,7 +468,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                                 R.animator.card_flip_left_enter,
                                 R.animator.card_flip_left_exit)
                         .replace(R.id.containerTomorrow, new
-                                FragmentTomorrow1())
+                                FragmentTomorrow2())
                         .addToBackStack(null)
                         .commit();
                 cityCount++;
@@ -470,7 +485,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                                 R.animator.card_flip_left_enter,
                                 R.animator.card_flip_left_exit)
                         .replace(R.id.containerTomorrow, new
-                                FragmentTomorrow1())
+                                FragmentTomorrow())
                         .addToBackStack(null)
                         .commit();
                 cityCount++;
@@ -495,7 +510,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                                 R.animator.card_flip_left_enter,
                                 R.animator.card_flip_left_exit)
                         .replace(R.id.containerAfterTomorrow, new
-                                FragmentTomorrow1())
+                                FragmentAfterTomorrow1())
                         .addToBackStack(null)
                         .commit();
                 cityCount++;
@@ -510,7 +525,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                                 R.animator.card_flip_left_enter,
                                 R.animator.card_flip_left_exit)
                         .replace(R.id.containerAfterTomorrow, new
-                                FragmentTomorrow1())
+                                FragmentAfterTomorrow2())
                         .addToBackStack(null)
                         .commit();
                 cityCount++;
@@ -527,7 +542,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                                 R.animator.card_flip_left_enter,
                                 R.animator.card_flip_left_exit)
                         .replace(R.id.containerAfterTomorrow, new
-                                FragmentTomorrow1())
+                                FragmentTomorrow())
                         .addToBackStack(null)
                         .commit();
                 cityCount++;
@@ -538,5 +553,5 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
 
 
     }
-*/
+
 }

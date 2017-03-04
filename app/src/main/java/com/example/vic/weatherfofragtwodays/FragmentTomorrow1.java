@@ -1,19 +1,18 @@
 package com.example.vic.weatherfofragtwodays;
 
-
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 /**
- * A simple {@link Fragment} subclass.
+ * Created by vic on 20/02/2017.
  */
-public class FragmentTomorrow1 extends Fragment {
+
+public class FragmentTomorrow1 extends Fragment{
 
     private TextView textTempMinDay,textTempMaxDay, textDescriptionDay, textPressureDay,textDateDay;
     private ImageView imageDay;
@@ -30,7 +29,7 @@ public class FragmentTomorrow1 extends Fragment {
         return rootView1;
     }
 
-    public void setDescription(int idIcon,String tempMinDayText,String tempMaxDayText,String descriptionDay, String pressureDay,String dateDay ){
+    public void setDescription(int idIcon,String tempMinDayText,String tempMaxDayText,String descriptionDay, String pressureDay,String dateDay) {
 
         textTempMinDay.setText(tempMinDayText);
 
@@ -38,8 +37,8 @@ public class FragmentTomorrow1 extends Fragment {
         textDescriptionDay.setText(descriptionDay);
 
         imageDay.setImageResource(idIcon);
-        //    textDateDay.setText(dateDay);
-        //   textPressureDay.setText(pressureDay);
+    //    textDateDay.setText(dateDay);
+     //   textPressureDay.setText(pressureDay);
 
     }
 }

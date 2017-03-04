@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.example.vic.weatherfofragtwodays.R.id.containerTomorrow;
 import static com.example.vic.weatherfofragtwodays.R.id.textCity;
 
 /**
