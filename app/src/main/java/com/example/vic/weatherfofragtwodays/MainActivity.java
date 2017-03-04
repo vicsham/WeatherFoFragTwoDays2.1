@@ -3,10 +3,12 @@ package com.example.vic.weatherfofragtwodays;
 
 import android.os.AsyncTask;
 import android.app.FragmentManager;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -28,22 +30,28 @@ public class MainActivity extends AppCompatActivity {
     String url;
     String cityUrl0 = "Vitoria-Gasteiz";
     String cityUrl1 = "Bilbao";
-    String cityUrl2 = "San Sebastian";
+    String cityUrl2 = "Pamplona";
+    //String cityUrl2 = "San Sebastian";
     String landUrl = "es";
     String apiId = "e25c9e1eb33eefc821749053b8257ae8";
     String urlCity0 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityUrl0 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
     String urlCity1 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityUrl1 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
+    String urlCity2 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityUrl2 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
     //San Sebastian hecho por Id
-    String urlCity2 = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + 3110044 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
+    //String urlCity2 = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + 3110044 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
+   // String urlCity2 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityUrl2 + ",%20" + landUrl + "&mode=json&appid=" + apiId + "&units=metric&lang=es&cnt=3";
    // String nameCity1="Bilbao";
     String currentCity="";
     String jsonString;
     int cityNumber=0;
     TextView textCity;
+    private int cityCount=0;
+    private int totalCity=3;
     private TextView textTomorrow, textTempTomorrow, textDescriptionTomorrow, textPressureTomorrow;
     private TextView textAfterTomorrow, textTempAfterTomorrow, textDescriptionAfterTomorrow, textPressureAfterTomorrow;
     private ImageView imageTomorrow, imageAfterTomorrow;
     private Layout fieldAfterTomorrow;
+    boolean dataFull;
 
 
     @Override
@@ -55,33 +63,45 @@ public class MainActivity extends AppCompatActivity {
 
       //  new GetDatosWeather(0).execute();
       //  new GetDatosWeather(1).execute();
-        cityNumber=2;
-       new GetDatosWeather(cityNumber).execute();
+
+
+        Handler handler = new Handler();
+        cityNumber=0;
+        currentCity="Vitoria-Gasteiz";
+        url=urlCity0;
+
+       new GetDatosWeather().execute();
+
+
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                cityNumber=1;
+                currentCity="Bilbao-Bilbo";
+                url=urlCity1;
+                new GetDatosWeather().execute();
+            }
+        }, 400);
+
+
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                cityNumber=2;
+                currentCity="Pamplona";
+               // currentCity="San Sebastián-Donstia";
+                url=urlCity2;
+                new GetDatosWeather().execute();
+            }
+        }, 800);
+
+
     }
+
+
 
     private class GetDatosWeather extends AsyncTask<Object, Object, String> {
 
 
-        public GetDatosWeather(int cityNumber) {
 
-
-            switch (cityNumber) {
-                case 0:
-                    currentCity="Vitoria-Gasteiz";
-                    url=urlCity0;
-                    break;
-                case 1:
-                    currentCity="Bilbao-Bilbo";
-                    url=urlCity1;
-                    break;
-                case 2:
-                    currentCity="San Sebastián-Donstia";
-                    url=urlCity2;
-                    break;
-                default:break;
-            }
-
-        }
 
         @Override
         protected void onPreExecute() {
@@ -139,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     textCity = (TextView) findViewById(R.id.textCity);
                    // textCity.setText(nameCity);
                     textCity.setText(currentCity);
-                   
+
 
 
                 } catch (final JSONException e) {
@@ -244,10 +264,19 @@ public class MainActivity extends AppCompatActivity {
     }
 public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,String tempMaxDay,String descriptionDay,
                            String pressureDay, String dateDay){
-
+    FragmentManager fragmentManager = getFragmentManager();
 
     if (day==1) {
-        FragmentManager fragmentManager = getFragmentManager();
+
+     /*
+
+        FragmentTomorrow fragmentTomorrow = (FragmentTomorrow) fragmentManager.findFragmentById(R.id.fragment_tomorrow);
+        // Выводим нужную информацию
+        if (fragmentTomorrow != null) {
+
+            fragmentTomorrow.setDescription(idIcon, tempMinDay, tempMaxDay, descriptionDay, pressureDay, dateDay);
+        }
+    */
         switch (cityNumber) {
             case 0:
                 FragmentTomorrow fragmentTomorrow = (FragmentTomorrow) fragmentManager.findFragmentById(R.id.fragment_tomorrow);
@@ -258,9 +287,9 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 }
 
                 break;
-            /*
+
             case 1:
-                FragmentTomorrow1 fragmentTomorrow1 = (FragmentTomorrow1) fragmentManager.findFragmentById(R.id.fragment_tomorrow_1);
+                FragmentTomorrow fragmentTomorrow1 = (FragmentTomorrow) fragmentManager.findFragmentById(R.id.fragment_tomorrow1);
                 // Выводим нужную информацию
                 if (fragmentTomorrow1 != null) {
 
@@ -268,7 +297,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 }
                 break;
             case 2:
-                FragmentTomorrow2 fragmentTomorrow2 = (FragmentTomorrow2) fragmentManager.findFragmentById(R.id.fragment_tomorrow_2);
+                FragmentTomorrow fragmentTomorrow2 = (FragmentTomorrow) fragmentManager.findFragmentById(R.id.fragment_tomorrow2);
                 // Выводим нужную информацию
                 if (fragmentTomorrow2 != null) {
 
@@ -276,16 +305,51 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 }
 
                 break;
-            */
+
             default:
                 break;
         }
 
-        // Получаем ссылку на второй фрагмент по ID
 
     }
 
     if (day==2){
+
+        switch (cityNumber) {
+            case 0:
+                FragmentAfterTomorrow fragmentAfterTomorrow = (FragmentAfterTomorrow) fragmentManager.findFragmentById(R.id.fragment_after_tomorrow);
+                // Выводим нужную информацию
+                if (fragmentAfterTomorrow != null) {
+
+                    fragmentAfterTomorrow.setDescription(idIcon, tempMinDay, tempMaxDay, descriptionDay, pressureDay, dateDay);
+                }
+
+                break;
+
+            case 1:
+                FragmentAfterTomorrow fragmentAfterTomorrow1 = (FragmentAfterTomorrow) fragmentManager.findFragmentById(R.id.fragment_after_tomorrow1);
+                // Выводим нужную информацию
+                if (fragmentAfterTomorrow1 != null) {
+
+                    fragmentAfterTomorrow1.setDescription(idIcon, tempMinDay, tempMaxDay, descriptionDay, pressureDay, dateDay);
+                }
+                break;
+            case 2:
+                FragmentAfterTomorrow fragmentAfterTomorrow2 = (FragmentAfterTomorrow) fragmentManager.findFragmentById(R.id.fragment_after_tomorrow2);
+                // Выводим нужную информацию
+                if (fragmentAfterTomorrow2 != null) {
+
+                    fragmentAfterTomorrow2.setDescription(idIcon, tempMinDay, tempMaxDay, descriptionDay, pressureDay, dateDay);
+                }
+
+                break;
+
+            default:
+                break;
+        }
+
+
+      /*
        FragmentManager fragmentManagerAfter = getFragmentManager();
          //fragmentManager = getSupportFragmentManager();
         // Получаем ссылку на второй фрагмент по ID
@@ -295,6 +359,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
 
             fragmentAfterTomorrow.setDescription(idIcon,tempMinDay,tempMaxDay,descriptionDay,pressureDay,dateDay);
         }
+        */
     }
 
 }
@@ -313,31 +378,165 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
         else if (802==weatherId) icon = "w03d";
         else if ((803==weatherId)&(804==weatherId)) icon = "w04d";
 
-        // int icon;
-/*
-        switch(id){
-            case 2:
-                icon = "w11d";
-                break;
-            case 3:
-                icon = "w09d"; //"&#xf01c;";
-                break;
-            case 7:
-                icon = "w50d"; //"&#xf014;";
-                break;
-            case 8:
-                icon = "w02d"; //"&#xf013;";
-                break;
-            case 6:
-                icon = "w13d"; //"&#xf01b;";
-                break;
-            case 5:
-                icon = "w10d"; //"&#xf019;";
-                break;
-
-        } */
         return icon;
 
     }
 
+/*
+    private void weatherAnimation(){
+
+         Handler handlerShow = new Handler();
+
+        FrameLayout frameLayoutTomorrow = (FrameLayout) findViewById(R.id.containerTomorrow);
+        assert frameLayoutTomorrow != null;
+        //  FrameLayout frameLayoutAfterTomorrow = (FrameLayout) findViewById(R.id.containerTomorrow);
+        //   assert frameLayoutAfterTomorrow != null;
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.containerTomorrow,new FragmentTomorrow())
+                .commit();
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.containerAfterTomorrow,new FragmentAfterTomorrow())
+                .commit();
+
+
+        handlerShow.postDelayed(new Runnable() {
+            public void run() {
+                flipTomorrow();
+             //   flipAfterTomorrow();
+            }
+        }, 4000);
+
+        handlerShow.postDelayed(new Runnable() {
+            public void run() {
+                flipTomorrow();
+            //    flipAfterTomorrow();
+            }
+        }, 8000);
+
+        handlerShow.postDelayed(new Runnable() {
+            public void run() {
+                flipTomorrow();
+           //     flipAfterTomorrow();
+            }
+        }, 12000);
+
+    }
+    private void flipTomorrow(){
+
+
+        switch(cityCount) {
+            case 0:
+                getFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(
+                                R.animator.card_flip_right_enter,
+                                R.animator.card_flip_right_exit,
+                                R.animator.card_flip_left_enter,
+                                R.animator.card_flip_left_exit)
+                        .replace(R.id.containerTomorrow, new
+                                FragmentTomorrow1())
+                        .addToBackStack(null)
+                        .commit();
+                cityCount++;
+                if(cityCount==totalCity)cityCount=0;
+                break;
+            case 1:
+                getFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(
+                                R.animator.card_flip_right_enter,
+                                R.animator.card_flip_right_exit,
+                                R.animator.card_flip_left_enter,
+                                R.animator.card_flip_left_exit)
+                        .replace(R.id.containerTomorrow, new
+                                FragmentTomorrow1())
+                        .addToBackStack(null)
+                        .commit();
+                cityCount++;
+                if(cityCount==totalCity)cityCount=0;
+                break;
+            case 2:
+
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(
+                                R.animator.card_flip_right_enter,
+                                R.animator.card_flip_right_exit,
+                                R.animator.card_flip_left_enter,
+                                R.animator.card_flip_left_exit)
+                        .replace(R.id.containerTomorrow, new
+                                FragmentTomorrow1())
+                        .addToBackStack(null)
+                        .commit();
+                cityCount++;
+                if(cityCount==totalCity)cityCount=0;
+                break;
+
+        }
+
+
+    }
+
+    private void flipAfterTomorrow(){
+
+
+        switch(cityCount) {
+            case 0:
+                getFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(
+                                R.animator.card_flip_right_enter,
+                                R.animator.card_flip_right_exit,
+                                R.animator.card_flip_left_enter,
+                                R.animator.card_flip_left_exit)
+                        .replace(R.id.containerAfterTomorrow, new
+                                FragmentTomorrow1())
+                        .addToBackStack(null)
+                        .commit();
+                cityCount++;
+                if(cityCount==totalCity)cityCount=0;
+                break;
+            case 1:
+                getFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(
+                                R.animator.card_flip_right_enter,
+                                R.animator.card_flip_right_exit,
+                                R.animator.card_flip_left_enter,
+                                R.animator.card_flip_left_exit)
+                        .replace(R.id.containerAfterTomorrow, new
+                                FragmentTomorrow1())
+                        .addToBackStack(null)
+                        .commit();
+                cityCount++;
+                if(cityCount==totalCity)cityCount=0;
+                break;
+            case 2:
+
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(
+                                R.animator.card_flip_right_enter,
+                                R.animator.card_flip_right_exit,
+                                R.animator.card_flip_left_enter,
+                                R.animator.card_flip_left_exit)
+                        .replace(R.id.containerAfterTomorrow, new
+                                FragmentTomorrow1())
+                        .addToBackStack(null)
+                        .commit();
+                cityCount++;
+                if(cityCount==totalCity)cityCount=0;
+                break;
+
+        }
+
+
+    }
+*/
 }

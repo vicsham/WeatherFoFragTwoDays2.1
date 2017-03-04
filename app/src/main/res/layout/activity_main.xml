@@ -53,6 +53,8 @@
                 android:textStyle="normal|bold"
                 android:textColor="#aa1611"/>
 
+
+
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -74,6 +76,48 @@
 
 
     </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="invisible">
+    <fragment
 
+        android:id="@+id/fragment_tomorrow1"
+        android:name="com.example.vic.weatherfofragtwodays.FragmentTomorrow"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        tools:layout="@layout/fragment_tomorrow"
+        android:textStyle="normal|bold"
+        android:textColor="#aa1611"/>
+
+    <fragment
+        android:id="@+id/fragment_tomorrow2"
+        android:name="com.example.vic.weatherfofragtwodays.FragmentTomorrow"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        tools:layout="@layout/fragment_tomorrow"
+        android:textStyle="normal|bold"
+        android:textColor="#aa1611"/>
+
+    <fragment
+        android:id="@+id/fragment_after_tomorrow1"
+        android:name="com.example.vic.weatherfofragtwodays.FragmentAfterTomorrow"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        tools:layout="@layout/fragment_after_tomorrow" />
+
+    <fragment
+        android:id="@+id/fragment_after_tomorrow2"
+        android:name="com.example.vic.weatherfofragtwodays.FragmentAfterTomorrow"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        tools:layout="@layout/fragment_after_tomorrow" />
+
+
+</LinearLayout>
 
 </RelativeLayout>

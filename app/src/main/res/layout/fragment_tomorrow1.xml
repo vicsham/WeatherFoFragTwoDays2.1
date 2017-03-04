@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:id="@+id/layoutTomorrow"
+    android:id="@+id/layoutTomorrow1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_weight="1"
     android:layout_centerHorizontal="true"
-    android:background="@color/defaultBackGroundColor2"
-    android:textColor="@color/defaultTextColor2"
+    android:background="@color/defaultBackGroundColor0"
+    android:textColor="@color/defaultTextColor0"
     >
 
     <TextView
-        android:id="@+id/textAfterTomorrow"
+        android:id="@+id/textTomorrow"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
-        android:text="Pasado Mañana"
+        android:text="Mañana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -24,7 +24,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="35sp"
         android:textStyle="normal|bold"
-        android:textColor="@color/defaultTextColor2"/>
+        android:textColor="@color/defaultTextColor0"
+
+        />
 
     <TextView
         android:id="@+id/textDate"
@@ -35,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/defaultTextColor2"
+        android:textColor="@color/defaultTextColor0"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="15sp"
         android:textStyle="normal|bold"/>
@@ -49,7 +51,6 @@
         android:id="@+id/imageDay"
         android:layout_gravity="center_horizontal"/>
 
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -62,36 +63,37 @@
             android:paddingTop="10dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
+            android:gravity="bottom|center_horizontal"
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textTempMinDay"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/defaultTextColor2"
+            android:textColor="@color/defaultTextColor0"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="40sp"
             android:layout_weight="1"
-            android:textStyle="normal|bold" />
+            android:textStyle="normal|bold"
+            />
 
         <TextView
+
             android:layout_marginRight="80dp"
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
+
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textTempMaxDay"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/defaultTextColor2"
+            android:textColor="@color/defaultTextColor0"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="50sp"
             android:layout_weight="1"
             android:textStyle="normal|bold" />
 
     </LinearLayout>
-
-
     <TextView
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
@@ -100,7 +102,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textDescriptionDay"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/defaultTextColor2"
+        android:textColor="@color/defaultTextColor0"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold"
         android:textSize="30sp"/>
@@ -113,7 +115,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textPressureDay"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/defaultTextColor2"
+        android:textColor="@color/defaultTextColor0"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold"
         android:textSize="30sp"/>

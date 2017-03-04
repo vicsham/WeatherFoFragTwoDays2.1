@@ -8,15 +8,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Created by vic on 04/03/2017.
+ */
 
-public class FragmentTomorrow2 extends Fragment {
+public class FragmentTomorrow2 extends Fragment{
 
 
     private TextView textTempMinDay,textTempMaxDay, textDescriptionDay, textPressureDay,textDateDay;
     private ImageView imageDay;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView1=inflater.inflate(R.layout.fragment_tomorrow_2,container,false);
+        View rootView1=inflater.inflate(R.layout.fragment_tomorrow1,container,false);
 
         imageDay = (ImageView) rootView1.findViewById(R.id.imageDay);
         textTempMinDay=(TextView) rootView1.findViewById(R.id.textTempMinDay);
