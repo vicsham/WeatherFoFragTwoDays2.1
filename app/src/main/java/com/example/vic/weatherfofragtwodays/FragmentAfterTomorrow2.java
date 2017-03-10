@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by vic on 20/02/2017.
@@ -39,6 +40,8 @@ public class FragmentAfterTomorrow2 extends Fragment{
         imageDay.setImageResource(idIcon);
     //    textDateDay.setText(dateDay);
      //   textPressureDay.setText(pressureDay);
+
+
 
     }
 }

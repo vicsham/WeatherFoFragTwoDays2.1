@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 url=urlCity1;
                 new GetDatosWeather().execute();
             }
-        }, 400);
+        }, 40);
 
 
         handler.postDelayed(new Runnable() {
@@ -95,14 +95,14 @@ public class MainActivity extends AppCompatActivity {
                 new GetDatosWeather().execute();
                 dataCargada=true;
             }
-        }, 800);
+        }, 80);
 
         handler.postDelayed(new Runnable() {
             public void run() {
                 cityNumber=2;
                 if (dataCargada)  weatherAnimation();
             }
-        }, 5000);
+        }, 900);
 
 
     }
@@ -300,6 +300,8 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 break;
 
             case 1:
+
+
                 FragmentTomorrow fragmentTomorrow1 = (FragmentTomorrow) fragmentManager.findFragmentById(R.id.fragment_tomorrow1);
                 // Выводим нужную информацию
                 if (fragmentTomorrow1 != null) {
@@ -308,6 +310,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 }
                 break;
             case 2:
+
                 FragmentTomorrow fragmentTomorrow2 = (FragmentTomorrow) fragmentManager.findFragmentById(R.id.fragment_tomorrow2);
                 // Выводим нужную информацию
                 if (fragmentTomorrow2 != null) {
@@ -333,6 +336,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 if (fragmentAfterTomorrow != null) {
 
                     fragmentAfterTomorrow.setDescription(idIcon, tempMinDay, tempMaxDay, descriptionDay, pressureDay, dateDay);
+                      Toast.makeText(MainActivity.this, "Pasado Call", Toast.LENGTH_LONG).show();
                 }
 
                 break;
@@ -346,6 +350,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 }
                 break;
             case 2:
+
                 FragmentAfterTomorrow fragmentAfterTomorrow2 = (FragmentAfterTomorrow) fragmentManager.findFragmentById(R.id.fragment_after_tomorrow2);
                 // Выводим нужную информацию
                 if (fragmentAfterTomorrow2 != null) {
@@ -400,8 +405,8 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
 
         FrameLayout frameLayoutTomorrow = (FrameLayout) findViewById(R.id.containerTomorrow);
         assert frameLayoutTomorrow != null;
-        //  FrameLayout frameLayoutAfterTomorrow = (FrameLayout) findViewById(R.id.containerTomorrow);
-        //   assert frameLayoutAfterTomorrow != null;
+          FrameLayout frameLayoutAfterTomorrow = (FrameLayout) findViewById(R.id.containerTomorrow);
+           assert frameLayoutAfterTomorrow != null;
 
         getFragmentManager()
                 .beginTransaction()
@@ -413,7 +418,7 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 .add(R.id.containerAfterTomorrow,new FragmentAfterTomorrow())
                 .commit();
         textCity.setText(cityUrl0);
-/*
+
         handlerShow.postDelayed(new Runnable() {
             public void run() {
                 textCity.setText(cityUrl1);
@@ -431,14 +436,6 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
 
             }
         }, 8000);
-
-        handlerShow.postDelayed(new Runnable() {
-            public void run() {
-                flipTomorrow();
-                flipAfterTomorrow();
-            }
-        }, 12000);
-*/
     }
     private void flipTomorrow(){
 
@@ -532,7 +529,6 @@ public  void callFragments(int day,int cityNumber, int idIcon,String tempMinDay,
                 if(cityCount==totalCity)cityCount=0;
                 break;
             case 2:
-
 
                 getFragmentManager()
                         .beginTransaction()

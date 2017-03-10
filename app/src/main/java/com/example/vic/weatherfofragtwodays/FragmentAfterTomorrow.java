@@ -19,6 +19,7 @@ public class FragmentAfterTomorrow extends Fragment{
     private ImageView imageDay;
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
+        setRetainInstance(true);
         View rootView1=inflater.inflate(R.layout.fragment_after_tomorrow,container,false);
 
         imageDay = (ImageView) rootView1.findViewById(R.id.imageDay);
