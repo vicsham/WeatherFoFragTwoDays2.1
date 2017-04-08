@@ -9,4 +9,8 @@
     <color name="defaultBackGroundColor0">#90efd0a9</color>
     <color name="defaultBackGroundColor1">#90225689</color>
     <color name="defaultBackGroundColor2">#9078a619</color>
+    <color name="cardFront">#10434850</color>
+    <color name="cardBack">#10bc4c4a</color>
+    <color name="white">#ffff</color>
+    <color name="transparent">#00000000 </color>
 </resources>

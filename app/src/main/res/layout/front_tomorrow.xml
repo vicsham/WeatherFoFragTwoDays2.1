@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/card_rectangle_width"
+        android:layout_height="@dimen/card_rectangle_height"
+        android:tint="@color/cardFront"
+        android:padding="@dimen/card_rectangle_paddig"
+        android:src="@drawable/rectangle"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:id="@+id/layoutFrontTomorrow"
+        android:layout_width="@dimen/card_rectangle_width"
+        android:layout_height="@dimen/card_rectangle_height"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_centerHorizontal="true"
+
+        android:textColor="@color/defaultTextColor0"
+        >
+        <!--
+        android:background="@color/defaultBackGroundColor0"
+ -->
+
+        <TextView
+            android:id="@+id/textFrontTomorrow"
+            android:layout_marginTop="@dimen/day_marginTop"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:text="Mañana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/day_text_size"
+            android:textStyle="normal|bold"
+            android:textColor="@color/defaultTextColor0"
+
+            />
+
+        <TextView
+            android:id="@+id/textDateFrontTomorrow"
+            android:layout_marginTop="@dimen/date_marginTop"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/defaultTextColor0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/date_text_size"
+            android:textStyle="normal|bold"/>
+
+
+        <ImageView
+            android:layout_marginTop="@dimen/image_marginTop"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:src="@drawable/ball"
+            android:id="@+id/imageDayFrontTomorrow"
+            android:layout_gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:background= "#00000000">
+            <TextView
+                android:paddingLeft="@dimen/tempMin_paddingLeft"
+                android:paddingTop="@dimen/tempMin_paddingTop"
+                android:layout_marginLeft="@dimen/tempMin_marginLeft"
+                android:layout_marginTop="@dimen/tempMin_marginTop"
+                android:gravity="bottom|center_horizontal"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textTempMinDayFrontTomorrow"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/defaultTextColor0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/tempMin_text_size"
+                android:layout_weight="1"
+                android:textStyle="normal|bold"
+                />
+
+            <TextView
+
+                android:layout_marginRight="@dimen/tempMax_marginRight"
+                android:layout_marginTop="@dimen/tempMax_marginTop"
+                android:gravity="center_horizontal"
+
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textTempMaxDayFrontTomorrow"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/defaultTextColor0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/tempMax_text_size"
+                android:layout_weight="1"
+                android:textStyle="normal|bold" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="@dimen/description_marginTop"
+            android:gravity="center_horizontal"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textDescriptionDayFrontTomorrow"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/defaultTextColor0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:textSize="@dimen/description_text_size"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/pressure_marginTop"
+            android:gravity="center_horizontal"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textPressureDayFrontTomorrow"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/defaultTextColor0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:textSize="@dimen/pressure_text_size"/>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

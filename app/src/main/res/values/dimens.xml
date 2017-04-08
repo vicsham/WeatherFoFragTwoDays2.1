@@ -2,4 +2,51 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--City dimens  -->
+    <dimen name="city_rectangle_width">350sp</dimen>
+    <dimen name="city_rectangle_height">48sp</dimen>
+    <dimen name="city_rectangle_padding">16sp</dimen>
+    <dimen name="city_text_size">24sp</dimen>
+
+    <!--Card dimens  -->
+    <dimen name="card_rectangle_width">300sp</dimen>
+    <dimen name="card_rectangle_height">400sp</dimen>
+    <dimen name="card_rectangle_paddig">10sp</dimen>
+    <dimen name="card_text_size">30sp</dimen>
+
+    <!--Text week day dimens  -->
+    <dimen name="day_text_size">24sp</dimen>
+    <dimen name="day_marginTop">10sp</dimen>
+
+    <!--Text date dimens  -->
+    <dimen name="date_text_size">20sp</dimen>
+    <dimen name="date_marginTop">20sp</dimen>
+
+    <!--Image dimens  -->
+    <dimen name="image_width">128sp</dimen>
+    <dimen name="image_height">128sp</dimen>
+    <dimen name="image_marginTop">20sp</dimen>
+
+    <!--Text tempMin dimens  -->
+    <dimen name="tempMin_text_size">24sp</dimen>
+    <dimen name="tempMin_marginTop">10sp</dimen>
+    <dimen name="tempMin_marginLeft">30sp</dimen>
+    <dimen name="tempMin_paddingTop">10sp</dimen>
+    <dimen name="tempMin_paddingLeft">70sp</dimen>
+
+    <!--Text tempMax dimens  -->
+    <dimen name="tempMax_text_size">34sp</dimen>
+    <dimen name="tempMax_marginTop">20sp</dimen>
+    <dimen name="tempMax_marginRight">80sp</dimen>
+    <dimen name="tempMax_paddingTop">10sp</dimen>
+    <dimen name="tempMax_paddingLeft">10sp</dimen>
+
+    <!--Text description dimens  -->
+    <dimen name="description_text_size">24sp</dimen>
+    <dimen name="description_marginTop">20sp</dimen>
+
+    <!--Text pressure dimens  -->
+    <dimen name="pressure_text_size">24sp</dimen>
+    <dimen name="pressure_marginTop">20sp</dimen>
 </resources>

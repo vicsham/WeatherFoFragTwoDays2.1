@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/city_rectangle_width"
+    android:layout_height="@dimen/city_rectangle_height"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+    <ImageView
+        android:layout_width="@dimen/city_rectangle_width"
+        android:layout_height="@dimen/city_rectangle_height"
+        android:tint="@color/cardBack"
+        android:paddingBottom="@dimen/city_rectangle_padding"
+        android:src="@drawable/rectangle"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        style="@style/Base.TextAppearance.AppCompat.Display1"
+        android:gravity="center"
+        android:id="@+id/textCityBack"
+        android:textSize="@dimen/city_text_size"/>
+
+
+</FrameLayout>

@@ -1,139 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main"
+
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/layoutPrincipal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.vic.weatherfofragtwodays.MainActivity"
-    android:background="@drawable/vitoria_gasteiz">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center_horizontal">
 
-    <LinearLayout
+    <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp">
+        android:layout_height="60sp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_margin="10sp"
+        android:layout_gravity="center_horizontal">
 
 
 
-        <TextView
-            android:id="@+id/textCity"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:textColor="#aa1611"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="45sp"
-            android:textStyle="normal|bold"/>
-        <LinearLayout
+
+
+        <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_centerHorizontal="true"
+            android:layout_height="50sp"
+            android:id="@+id/frameText"
+            xmlns:tools="http://schemas.android.com/tools"
             >
 
+
+
             <FrameLayout
-                android:id="@+id/containerTomorrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:id="@+id/tvCityOne"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/back_city" />
 
             </FrameLayout>
 
-
-
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
+            <FrameLayout
+                android:id="@+id/tvCityCero"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background= "#00000000">
-            </LinearLayout>
+                >
+                <include layout="@layout/front_city" />
+
+            </FrameLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        android:paddingLeft="90sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_gravity="center_horizontal"
+        tools:context="blog.droidsonroids.pl.blogpost.MainActivity"
+        android:gravity="center_horizontal"
+
+        >
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/frame0"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="blog.droidsonroids.pl.blogpost.MainActivity"
+            android:onClick="flipCard"
+            android:gravity="center_horizontal"
+            android:layout_weight="10"
+
+            >
+
+
 
 
             <FrameLayout
-                android:id="@+id/containerAfterTomorrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:id="@+id/card_back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include layout="@layout/back_tomorrow" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/card_front"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <include layout="@layout/front_tomorrow" />
 
             </FrameLayout>
 
 
-        </LinearLayout>
+        </FrameLayout>
+
+
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/frame1"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="blog.droidsonroids.pl.blogpost.MainActivity"
+            android:onClick="flipCard"
+            android:gravity="center_horizontal"
+
+            android:layout_weight="10"
+
+            >
+
+
+            <FrameLayout
+                android:id="@+id/card_back1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include layout="@layout/back_after_tomorrow" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/card_front1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <include layout="@layout/front_after_tomorrow" />
+
+            </FrameLayout>
+
+
+        </FrameLayout>
 
 
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:visibility="invisible">
-
-    <fragment
-        android:id="@+id/fragment_tomorrow"
-        android:name="com.example.vic.weatherfofragtwodays.FragmentTomorrow"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
-        tools:layout="@layout/fragment_tomorrow"
-        android:textStyle="normal|bold"
-        android:textColor="#aa1611"/>
-    <fragment
-
-        android:id="@+id/fragment_tomorrow1"
-        android:name="com.example.vic.weatherfofragtwodays.FragmentTomorrow"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
-        tools:layout="@layout/fragment_tomorrow1"
-        android:textStyle="normal|bold"
-        android:textColor="#aa1611"/>
-
-    <fragment
-        android:id="@+id/fragment_tomorrow2"
-        android:name="com.example.vic.weatherfofragtwodays.FragmentTomorrow"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
-        tools:layout="@layout/fragment_tomorrow2"
-        android:textStyle="normal|bold"
-        android:textColor="#aa1611"/>
-
-    <fragment
-        android:id="@+id/fragment_after_tomorrow"
-        android:name="com.example.vic.weatherfofragtwodays.FragmentAfterTomorrow"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
-        tools:layout="@layout/fragment_after_tomorrow" />
-
-    <fragment
-        android:id="@+id/fragment_after_tomorrow1"
-        android:name="com.example.vic.weatherfofragtwodays.FragmentAfterTomorrow"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
-        tools:layout="@layout/fragment_after_tomorrow1" />
-
-    <fragment
-        android:id="@+id/fragment_after_tomorrow2"
-        android:name="com.example.vic.weatherfofragtwodays.FragmentAfterTomorrow"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
-        tools:layout="@layout/fragment_after_tomorrow2" />
-
 
 </LinearLayout>
 
-</RelativeLayout>
+
+

@@ -13,6 +13,9 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import static com.example.vic.weatherfofragtwodays.MainActivity.countConn;
+import static com.example.vic.weatherfofragtwodays.MainActivity.countEntr;
+
 public class HttpHandler {
 
     private static final String TAG = HttpHandler.class.getSimpleName();
@@ -22,10 +25,13 @@ public class HttpHandler {
 
     public String makeServiceCall(String reqUrl){
         String response = null;
+        Log.d(TAG, "Count connection Entradas: " + countEntr++);
+
         try {
             URL url = new URL(reqUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
+            Log.d(TAG, "Count connection: " + countConn++);
             // read the response
             InputStream in = new BufferedInputStream(conn.getInputStream());
             response = convertStreamToString(in);
